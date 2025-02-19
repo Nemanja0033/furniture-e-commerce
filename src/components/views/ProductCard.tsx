@@ -8,7 +8,7 @@ interface ProductCardProps {
 const ProductCard = ({img, title, price}: ProductCardProps) => {
 
 	return(
-		<div className="w-[300px] h-[400px] border border-gray-200 rounded-md grid grid-col-1 shadow-md p-1">
+		<div className="md:w-[300px] w-[90%] h-[400px] rounded-md grid grid-col-1 shadow-md">
 			<img className="h-[90%] w-full" src={img} alt={title} />
 			<span className="text-xl text-center font-semibold">{title}</span>
 			<span className="text-center">{price}$</span>
