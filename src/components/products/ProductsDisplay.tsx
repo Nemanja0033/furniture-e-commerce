@@ -6,7 +6,7 @@ const ProductsDisplay = () => {
     const [products, setProducts] = useState<any []>([]);
 
     useEffect(() => {
-        axios.get('https://furniture-api.fly.dev/v1/products/')
+        axios.get('https://furniture-api.fly.dev/v1/products/?&limit=100')
         .then((res) => {
             setProducts(res.data.data);
         })
@@ -16,7 +16,7 @@ const ProductsDisplay = () => {
     }, [])
 
   return (
-    <section className="w-full h-full grid md:grid-cols-4 grid-cols-1 place-items-center gap-5">
+    <section className="w-full h-full grid md:grid-cols-4 mt-[90px] px-5 grid-cols-1 place-items-center gap-5">
         {products.map((p) => (
             <ProductCard img={p.image_path} title={p.name} price={p.price} />
         ))}
