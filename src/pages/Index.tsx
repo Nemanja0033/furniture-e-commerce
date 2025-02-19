@@ -1,8 +1,12 @@
-import Hero from '../components/index/Hero'
+import Hero from '../components/index/HeroSection'
+import FeauturedSection from '../components/index/FeauturedSection'
 
 const Index = () => {
   return (
-    <div><Hero /></div>
+    <div>
+      <Hero />
+      <FeauturedSection />
+    </div>
   )
 }
 
