@@ -1,5 +1,5 @@
-import Hero from '../components/index/HeroSection'
-import FeauturedSection from '../components/index/FeauturedSection'
+import Hero from '../components/home/HeroSection'
+import FeauturedSection from '../components/home/FeauturedSection'
 
 const Index = () => {
   return (

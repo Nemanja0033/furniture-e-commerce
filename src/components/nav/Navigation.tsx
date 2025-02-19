@@ -1,7 +1,7 @@
 import {Search, ShoppingCart} from 'lucide-react'
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router'
-import CartNavigation from './Cart.tsx/CartNavigation';
+import CartNavigation from '../cart/CartNavigation';
 
 
 const Navigation = () => { 

@@ -19,13 +19,13 @@ const FeauturedSection = () => {
 	}, []);
 
 	return(
-		<main className="w-full h-auto md:text-start text-center font-light px-10 flex-row">
+		<main className="w-full h-auto md:text-start font-light px-10 flex-row">
 			<h3 className="text-xl">Aks Collection</h3>
 			<div className='flex justify-between'>
 				<h1 className="font-semibold text-2xl">Feautured Products</h1>
 				<Link to={'/products'} className='flex gap-2 cursor-pointer'>View all <ArrowRight /></Link>
 			</div>
-			<section className='w-full grid md:grid-cols-4 grid-cols-1 mt-3 gap-3'>
+			<section className='w-full grid md:grid-cols-4 place-items-center grid-cols-1 mt-3 gap-3'>
 			{products.map((p: any) => (
 					<ProductCard img={p.image_path} 
 								 title={p.name} 
