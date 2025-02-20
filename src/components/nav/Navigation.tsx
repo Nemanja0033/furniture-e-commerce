@@ -1,4 +1,4 @@
-import {Home, Search, ShoppingCart} from 'lucide-react'
+import { Search, ShoppingCart} from 'lucide-react'
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router'
 import CartNavigation from '../cart/CartNavigation';
@@ -27,11 +27,8 @@ const Navigation = () => {
         <div className="flex items-center gap-2">
             {path.pathname !== "/products" ? <Link to={'/products'} className='rounded-lg border-gray-300 border p-1 hover:bg-gray-100 cursor-pointer'><Search size={24} /></Link>
             : 
-            (
-              <>
-                <Link className='rounded-lg border-gray-300 border p-1 hover:bg-gray-100 cursor-pointer' to={'/'}><Home /></Link>
-              </>
-            )}
+            null
+            }
             <button onClick={() => setIsCartOpen(true)} className='rounded-lg border-gray-300 border p-1 hover:bg-gray-100 cursor-pointer'><ShoppingCart size={24} /></button>
         </div>
     </nav>

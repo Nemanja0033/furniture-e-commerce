@@ -79,8 +79,9 @@ const ProductsDisplay = () => {
 
     return (
         <main className="mt-[90px] px-5">
-            <nav className="flex justify-start gap-3 mb-3">
-                <select className="p-2" onChange={handleSortChange} value={state.sort}>
+            <nav className="flex justify-between gap-3 mb-3 py-3 border-b border-gray-300">
+               <div className="flex gap-2">
+               <select className="p-2" onChange={handleSortChange} value={state.sort}>
                     <option value="">Sort</option>
                     <option value="price_asc">Price (Min to Max)</option>
                     <option value="price_desc">Price (Max to Min)</option>
@@ -88,6 +89,17 @@ const ProductsDisplay = () => {
                     <option value="name_desc">Z-A</option>
                     <option value="newest">Newest</option>
                     <option value="oldest">Oldest</option>
+                </select>
+                <select className="p-2" onChange={handleSortChange} value={state.sort}>
+                    <option value="">Wood Type</option>
+                    <option value="walunt">Walunt</option>
+                    <option value="maple">Maple</option>
+                    <option value="oak">Oak</option>
+                    <option value="pine">Pine</option>
+                    <option value="eucalyptus">Eucalyptus</option>
+                    <option value="bamboo">Bamboo</option>
+                    <option value="teak">Teak</option>
+                    <option value="cedar">Cedar</option>
                 </select>
                 <select className="p-2" onChange={handleCategoryChange} value={state.sort}>
                     <option value="">Category</option>
@@ -98,9 +110,10 @@ const ProductsDisplay = () => {
                     <option value="desk">Desks</option>
                     <option value="kitchen">Kitchen</option>
                 </select>
+               </div>
                 <input
                     type="text"
-                    placeholder="Search..."
+                    placeholder="Search products..."
                     onChange={handleSearchChange}
                     className="border p-2 "
                 />
