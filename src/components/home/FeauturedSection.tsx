@@ -8,7 +8,6 @@ import Loader from '../ui/Loader';
 const FeauturedSection = () => {
 	const [products, setProducts] = useState<any[]>([]);
 	const [loading, setLoading] = useState(true);
-	console.log(products)
 
 	useEffect(() => {
 		axios.get('https://furniture-api.fly.dev/v1/products/?&limit=8')

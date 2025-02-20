@@ -5,8 +5,8 @@ import {ArrowUpRight} from 'lucide-react'
 const Hero = () => {
 
 	return (
-		<main className="w-full px-5 h-screen grid md:flex justify-center gap-4 flex-row">
-			<section className="md:w-1/2 md:mt-54 mt-42 w-full h-screen flex-row text-center">
+		<main className="w-full px-5 md:h-screen h-full grid md:flex md:mb-0 mb-20 justify-center gap-5 flex-row">
+			<section className="md:w-1/2 md:mt-54 mt-42 w-full md:h-full h-auto flex-row text-center">
 				<h1 className="md:text-5xl text-4xl font-bold text-gray-700">Welcome to Aks where simplicity meets art.</h1>
 				<p className="font-light text-center mt-5">Explore our collection of handcrafted furniture, made with premium materials.</p>
 				<div className="flex justify-center mt-5">	

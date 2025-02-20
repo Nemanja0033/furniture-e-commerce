@@ -22,7 +22,7 @@ const Navigation = () => {
     }
 
     return (
-    <nav className="w-full h-[70px] z-50 fixed top-0 items-center px-15 flex justify-between shadow-md backdrop-blur-lg bg-amber-50/60">
+    <nav className="w-full h-[70px] z-50 fixed top-0 items-center px-15 flex justify-between shadow-md backdrop-blur-lg bg-white-50/60">
         <Link to={'/'} className="text-3xl font-bold text-gray-800">Aks.</Link>
         <div className="flex items-center gap-2">
             {path.pathname !== "/products" ? <Link to={'/products'} className='rounded-lg border-gray-300 border p-1 hover:bg-gray-100 cursor-pointer'><Search size={24} /></Link>
