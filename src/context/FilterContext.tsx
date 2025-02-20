@@ -4,12 +4,14 @@ type State = {
     sort: string,
     name: string,
     category: string,
+    wood_type: string
 }
 
 const initialState: State = {
     sort: '',
     name: '',
-    category: ''
+    category: '',
+    wood_type: ''
 }
 
 //reducer func
@@ -21,6 +23,8 @@ function reducer(state: State, action: any){
             return {...state, name: action.payload};
         case "SET_CATEGORY":
             return {...state, category: action.payload}
+        case "WOOD_TYPE":
+            return {...state, wood_type: action.payload}
         default:
             return state;
     }
