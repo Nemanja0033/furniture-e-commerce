@@ -1,22 +1,22 @@
 import React, { createContext, ReactNode, useContext, useReducer } from "react";
 
 type State = {
-    category: string,
-    search: string,
+    sort: string,
+    name: string,
 }
 
 const initialState: State = {
-    category: '',
-    search: ''
+    sort: '',
+    name: ''
 }
 
 //reducer func
 function reducer(state: State, action: any){
     switch(action.type){
-        case 'SET_CATEGORY':
-            return {...state, category: action.payload};
-        case "SET_SEARCH":
-            return {...state, search: action.payload};
+        case 'SET_SORT':
+            return {...state, sort: action.payload};
+        case "SET_NAME":
+            return {...state, name: action.payload};
         default:
             return state;
     }
