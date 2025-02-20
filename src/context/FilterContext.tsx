@@ -5,7 +5,8 @@ type State = {
     name: string,
     category: string,
     wood_type: string,
-    offset: number
+    offset: number,
+    limit: number,
 }
 
 const initialState: State = {
@@ -14,6 +15,7 @@ const initialState: State = {
     category: '',
     wood_type: '',
     offset: 0,
+    limit: 10,
 }
 
 //reducer func
@@ -27,6 +29,10 @@ function reducer(state: State, action: any){
             return {...state, category: action.payload}
         case "WOOD_TYPE":
             return {...state, wood_type: action.payload}
+        case "OFFSET":
+            return {...state, offset: action.payload}
+        case "SET_LIMIT":
+            return {...state, limit: action.payload}
         default:
             return state;
     }
