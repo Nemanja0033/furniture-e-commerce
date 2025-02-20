@@ -30,11 +30,12 @@ const ProductsDisplay = () => {
         setLoading(true);
         axios.get('https://furniture-api.fly.dev/v1/products/', {
             params: {
-                limit: 100,
+                limit: 10,
                 sort: state.sort || undefined,
                 name: state.name || undefined,
                 category: state.category || undefined,
                 wood_type: state.wood_type || undefined,
+                offset: 1
             }
         })
         .then((res) => {
@@ -80,7 +81,7 @@ const ProductsDisplay = () => {
         });
     };
 
-    const handleWoodTypeChabge = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleWoodChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const newWoodType = e.target.value;
         dispatch({type: "WOOD_TYPE", payload: newWoodType});
 
@@ -89,8 +90,7 @@ const ProductsDisplay = () => {
             params.set("wood_type", newWoodType);
             return params;
         })
-    }
-
+    };
 
     return (
         <main className="mt-[90px] px-5">
@@ -105,7 +105,7 @@ const ProductsDisplay = () => {
                     <option value="newest">Newest</option>
                     <option value="oldest">Oldest</option>
                 </select>
-                <select className="p-2" onChange={handleSortChange} value={state.sort}>
+                <select className="p-2" onChange={handleWoodChange} value={state.wood_type}>
                     <option value="">Wood Type</option>
                     <option value="walunt">Walunt</option>
                     <option value="maple">Maple</option>

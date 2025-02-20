@@ -4,14 +4,16 @@ type State = {
     sort: string,
     name: string,
     category: string,
-    wood_type: string
+    wood_type: string,
+    offset: number
 }
 
 const initialState: State = {
     sort: '',
     name: '',
     category: '',
-    wood_type: ''
+    wood_type: '',
+    offset: 0,
 }
 
 //reducer func
