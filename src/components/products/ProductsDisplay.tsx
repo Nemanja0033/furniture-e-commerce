@@ -16,10 +16,13 @@ const ProductsDisplay = () => {
         const sortFromUrl = searchParams.get("sort") || "";
         const searchFromURL = searchParams.get("name") || "";
         const categoryFromUrl = searchParams.get("category") || "";
+        const woodTypeFromUrl = searchParams.get("wood_type") || "";
 
         dispatch({ type: "SET_SORT", payload: sortFromUrl});
         dispatch({ type: "SET_NAME", payload: searchFromURL });
         dispatch({ type: "SET_CATEGORY", payload: categoryFromUrl});
+        dispatch({ type: "WOOD_TYPE", payload: woodTypeFromUrl});
+
     }, []);
 
     // Fetch proizvoda sa filtracijom
@@ -31,6 +34,7 @@ const ProductsDisplay = () => {
                 sort: state.sort || undefined,
                 name: state.name || undefined,
                 category: state.category || undefined,
+                wood_type: state.wood_type || undefined,
             }
         })
         .then((res) => {
@@ -75,6 +79,17 @@ const ProductsDisplay = () => {
             return params;
         });
     };
+
+    const handleWoodTypeChabge = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const newWoodType = e.target.value;
+        dispatch({type: "WOOD_TYPE", payload: newWoodType});
+
+        setSearchParams((perv) => {
+            const params = new URLSearchParams(perv);
+            params.set("wood_type", newWoodType);
+            return params;
+        })
+    }
 
 
     return (
