@@ -1,8 +1,9 @@
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 import ProductCard from '../views/ProductCard';
-import { ArrowRight, Loader } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router';
+import Loader from '../ui/Loader';
 
 const FeauturedSection = () => {
 	const [products, setProducts] = useState<any[]>([]);
@@ -22,9 +23,7 @@ const FeauturedSection = () => {
 
 	if(loading){
 		return(
-			<>
-			 <Loader />
-			</>
+			<Loader />
 		)
 	}
 
