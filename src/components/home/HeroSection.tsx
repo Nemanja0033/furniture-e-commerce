@@ -1,9 +1,7 @@
-
 import {HERO_IMG} from '../../constants/links.ts'
 import {ArrowUpRight} from 'lucide-react'
 
 const Hero = () => {
-
 	return (
 		<main className="w-full px-5 md:h-screen h-full grid md:flex md:mb-0 mb-20 justify-center gap-5 flex-row">
 			<section className="md:w-1/2 md:mt-54 mt-42 w-full md:h-full h-auto flex-row text-center">

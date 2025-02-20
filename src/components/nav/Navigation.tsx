@@ -14,9 +14,7 @@ const Navigation = () => {
     if(isCartOpen){
         return (
         <div className='bg-black/70 z-50 fixed top-0 w-full max-h-screen flex justify-end'>
-            <CartNavigation products={[]}
-                            toggler={cartNavToggler} 
-                            />
+            <CartNavigation toggler={cartNavToggler} />
         </div>
         )
     }

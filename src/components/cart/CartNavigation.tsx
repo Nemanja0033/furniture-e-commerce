@@ -1,12 +1,11 @@
 import {X}  from 'lucide-react'
 
 interface CartNavigationProps {
-    products: any[],
     toggler: any
 }
-const CartNavigation = ({products, toggler}: CartNavigationProps) => {
+const CartNavigation = ({ toggler}: CartNavigationProps) => {
     return (
-        <aside className='md:w-1/3 bg-amber-50 w-full h-screen grid grid-cols-1 shadow-md'>
+        <aside className='md:w-1/3 bg-amber-50 w-1/2 h-screen grid grid-cols-1 shadow-md'>
             <nav className="flex w-full h-[40px] px-3 justify-between items-center shadow-md" >
                 <span>Cart</span>
                 <button onClick={toggler} className='cursor-pointer'><X size={24} /></button>
