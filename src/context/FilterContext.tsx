@@ -3,11 +3,13 @@ import React, { createContext, ReactNode, useContext, useReducer } from "react";
 type State = {
     sort: string,
     name: string,
+    category: string,
 }
 
 const initialState: State = {
     sort: '',
-    name: ''
+    name: '',
+    category: ''
 }
 
 //reducer func
@@ -17,6 +19,8 @@ function reducer(state: State, action: any){
             return {...state, sort: action.payload};
         case "SET_NAME":
             return {...state, name: action.payload};
+        case "SET_CATEGORY":
+            return {...state, category: action.payload}
         default:
             return state;
     }
