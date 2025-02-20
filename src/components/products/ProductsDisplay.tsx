@@ -67,7 +67,7 @@ const ProductsDisplay = () => {
 
     return (
         <main className="mt-[90px] px-5">
-            <nav className="flex justify-start gap-3">
+            <nav className="flex justify-start gap-3 mb-3">
                 <select onChange={handleCategoryChange} value={state.sort}>
                     <option value="">All</option>
                     <option value="price_asc">Price (Min to Max)</option>

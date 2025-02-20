@@ -1,4 +1,4 @@
-import {Search, ShoppingCart} from 'lucide-react'
+import {Home, Search, ShoppingCart} from 'lucide-react'
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router'
 import CartNavigation from '../cart/CartNavigation';
@@ -32,7 +32,7 @@ const Navigation = () => {
             : 
             (
               <>
-                <input onChange={(e) => dispatch({type: 'SET_SEARCH', payload: e.target.value})} className='border border-gray-300 p-1 rounded-lg' type='text' placeholder='Search products' />
+                <Link className='rounded-lg border-gray-300 border p-1 hover:bg-gray-100 cursor-pointer' to={'/'}><Home /></Link>
               </>
             )}
             <button onClick={() => setIsCartOpen(true)} className='rounded-lg border-gray-300 border p-1 hover:bg-gray-100 cursor-pointer'><ShoppingCart size={24} /></button>
