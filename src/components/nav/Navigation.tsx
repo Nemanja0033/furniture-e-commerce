@@ -2,13 +2,10 @@ import {Home, Search, ShoppingCart} from 'lucide-react'
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router'
 import CartNavigation from '../cart/CartNavigation';
-import { useFilter } from '../../context/FilterContext';
-
 
 const Navigation = () => { 
     const path = useLocation();
     const [isCartOpen, setIsCartOpen] = useState(false);
-    const { dispatch} = useFilter() ;
 
     const cartNavToggler = () => {
         setIsCartOpen(false);

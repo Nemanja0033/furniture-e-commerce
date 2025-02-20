@@ -68,7 +68,7 @@ const ProductsDisplay = () => {
     return (
         <main className="mt-[90px] px-5">
             <nav className="flex justify-start gap-3 mb-3">
-                <select onChange={handleCategoryChange} value={state.sort}>
+                <select className="p-2" onChange={handleCategoryChange} value={state.sort}>
                     <option value="">All</option>
                     <option value="price_asc">Price (Min to Max)</option>
                     <option value="price_desc">Price (Max to Min)</option>
@@ -81,7 +81,7 @@ const ProductsDisplay = () => {
                     type="text"
                     placeholder="Search..."
                     onChange={handleSearchChange}
-                    className="border p-2"
+                    className="border p-2 "
                 />
             </nav>
 
@@ -89,7 +89,7 @@ const ProductsDisplay = () => {
                 <h1 className="font-bold text-xl">Results for "{state.name}"</h1>
             )}
 
-            <section className={`w-full h-full ${!loading ? 'grid md:grid-cols-4 grid-cols-1 place-items-center gap-5' : 'flex justify-center items-center'}`}>
+            <section className={`w-full h-full ${!loading ? 'grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 place-items-center gap-5' : 'flex justify-center items-center'}`}>
                 {!loading ? (
                     products.length > 0 ? (
                         products.map((p) => (
