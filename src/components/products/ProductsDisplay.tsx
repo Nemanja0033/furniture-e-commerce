@@ -98,37 +98,6 @@ const ProductsDisplay = () => {
     return (
         <main className="mt-[90px] px-5">
             <nav className="flex justify-between gap-3 mb-3 py-3 border-b border-gray-300">
-            <div className="flex justify-center gap-4 mt-5">
-                    <button
-                        disabled={Number(state.offset) === 0}
-                        onClick={() => {
-                            const newOffset = Math.max(0, Number(state.offset) - 10);
-                            dispatch({ type: "OFFSET", payload: newOffset.toString() });
-                            setSearchParams((prev) => {
-                                const params = new URLSearchParams(prev);
-                                params.set("offset", newOffset.toString());
-                                return params;
-                            });
-                        }}
-                        className="px-4 py-2 bg-gray-200 rounded disabled:opacity-50"
-                    >
-                        Previous
-                    </button>
-                    <button
-                        onClick={() => {
-                            const newOffset = Number(state.offset) + 10;
-                            dispatch({ type: "OFFSET", payload: newOffset.toString() });
-                            setSearchParams((prev) => {
-                                const params = new URLSearchParams(prev);
-                                params.set("offset", newOffset.toString());
-                                return params;
-                            });
-                        }}
-                        className="px-4 py-2 bg-gray-200 rounded"
-                    >
-                        Next
-                    </button>
-                </div>
                <div className="flex gap-2">
                <select className="p-2" onChange={handleSortChange} value={state.sort}>
                     <option value="">Sort</option>
@@ -187,6 +156,39 @@ const ProductsDisplay = () => {
                     <Loader />
                 )}
             </section>
+            <nav className="flex justify-center">
+            <div className="flex justify-center gap-4 mt-5">
+                    <button
+                        disabled={Number(state.offset) === 0}
+                        onClick={() => {
+                            const newOffset = Math.max(0, Number(state.offset) - 10);
+                            dispatch({ type: "OFFSET", payload: newOffset.toString() });
+                            setSearchParams((prev) => {
+                                const params = new URLSearchParams(prev);
+                                params.set("offset", newOffset.toString());
+                                return params;
+                            });
+                        }}
+                        className="px-4 py-2 bg-gray-200 rounded disabled:opacity-50"
+                    >
+                        Previous
+                    </button>
+                    <button
+                        onClick={() => {
+                            const newOffset = Number(state.offset) + 10;
+                            dispatch({ type: "OFFSET", payload: newOffset.toString() });
+                            setSearchParams((prev) => {
+                                const params = new URLSearchParams(prev);
+                                params.set("offset", newOffset.toString());
+                                return params;
+                            });
+                        }}
+                        className="px-4 py-2 bg-gray-200 rounded"
+                    >
+                        Next
+                    </button>
+                </div>
+            </nav>
         </main>
     );
 };
