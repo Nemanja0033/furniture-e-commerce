@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, Suspense} from 'react';
 import axios from 'axios';
 import ProductCard from '../views/ProductCard';
 import { ArrowRight } from 'lucide-react';
@@ -25,14 +25,16 @@ const FeauturedSection = () => {
 				<h1 className="font-semibold text-2xl">Feautured Products</h1>
 				<Link to={'/products'} className='flex gap-2 cursor-pointer'>View all <ArrowRight /></Link>
 			</div>
-			<section className='w-full grid md:grid-cols-4 place-items-center grid-cols-1 mt-3 gap-10'>
-			{products.map((p: any) => (
-					<ProductCard img={p.image_path} 
-								 title={p.name} 
-								 price={p.price} 
-								 />
-			))}
-			</section>
+			<Suspense>
+				<section className='w-full grid md:grid-cols-4 place-items-center grid-cols-1 mt-3 gap-10'>
+				{products.map((p: any) => (
+						<ProductCard img={p.image_path} 
+									title={p.name} 
+									price={p.price} 
+									/>
+				))}
+				</section>
+			</Suspense>
 		</main>
 	)
 }
