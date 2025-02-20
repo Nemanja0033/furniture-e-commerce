@@ -7,20 +7,31 @@ import { useFilter } from "../../context/FilterContext";
 const ProductsDisplay = () => {
     const [products, setProducts] = useState<any []>([]);
     const [loading, setLoading] = useState(true);
-    const {state} = useFilter();
-    console.log(products)
+    const {state, dispatch} = useFilter();
 
+    const generateApiUrl = () => { //rest api filtering with query
+        let baseUrl = "https://furniture-api.fly.dev/v1/products?";
+        let params = [];
+    
+        if (state.category) params.push(`sort=${state.category}`);
+        if (state.search) params.push(`search=${state.search}`);
+    
+        return baseUrl + params.join("&");
+    };
+    
     useEffect(() => {
-        axios.get('https://furniture-api.fly.dev/v1/products/?&limit=100')
-        .then((res) => {
-            setProducts(res.data.data);
-            setLoading(false);
-        })
-        .catch((err) => {
-            console.log(err);
-        });
-    }, [])
-
+        setLoading(true);
+        axios.get(generateApiUrl())
+            .then((res) => {
+                setProducts(res.data.data);
+                setLoading(false);
+            })
+            .catch((err) => {
+                console.log(err);
+                setLoading(false);
+            });
+    }, [state.category, state.search]);
+    
     if(loading){
 		return(
 			<>
@@ -31,6 +42,16 @@ const ProductsDisplay = () => {
   
   return (
     <main className="mt-[90px] px-5 ">
+        <nav className="flex justify-start gap-3">
+            <select onChange={(e) => dispatch({type: "SET_CATEGORY", payload: e.target.value})}>
+                <option value="price_asc">Price (Min to Max)</option>
+                <option value="price_desc">Price (Max to Min)</option>
+                <option value="name_asc">A-Z</option>
+                <option value="name_desc">Z-A</option>
+                <option value="newest">Newest</option>
+                <option value="oldest">Oldest</option>
+            </select>
+        </nav>
         {state.search.length > 0 ? (
             <h1 className="font-bold text-xl">Results for "{state.search}"</h1>    
             ) 
