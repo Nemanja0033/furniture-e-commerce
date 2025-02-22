@@ -4,8 +4,7 @@ import ProductCard from "../views/ProductCard";
 import Loader from "../ui/Loader";
 import { useFilter } from "../../context/FilterReducer";
 import { useSearchParams } from "react-router";
-import { Settings2 } from "lucide-react";
-import FilterMenu from "./FilterMenu";
+import { Settings2, X } from "lucide-react";
 
 const ProductsDisplay = () => {
     const [products, setProducts] = useState<any[]>([]);
@@ -52,6 +51,10 @@ const ProductsDisplay = () => {
         });
     }, [state.sort, state.name, state.category, state.wood_type, state.offset]);
 
+    const closeFilter = () => {
+        setIsFiltersOpen(false);
+    };
+
     const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const newSort = e.target.value;
         dispatch({ type: "SET_SORT", payload: newSort });
@@ -61,6 +64,7 @@ const ProductsDisplay = () => {
             params.set("sort", newSort);
             return params;
         });
+        closeFilter();
     };
 
     const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -71,7 +75,8 @@ const ProductsDisplay = () => {
             const params = new URLSearchParams(perv);
             params.set('category', newCategory);
             return params;
-        })
+        });
+        closeFilter();
     };
 
     const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -83,6 +88,7 @@ const ProductsDisplay = () => {
             params.set("search", newSearch);
             return params;
         });
+        closeFilter();
     };
 
     const handleWoodChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -93,21 +99,50 @@ const ProductsDisplay = () => {
             const params = new URLSearchParams(perv);
             params.set("wood_type", newWoodType);
             return params;
-        })
+        });
+        closeFilter();
     };
-
-    const closeFilter = () => {
-        setIsFiltersOpen(false);
-    };
-
+    
     return (
         <main className="mt-[90px] px-5">
-            {isFiltersOpen ? (
-                <FilterMenu sortFilter={handleSearchChange}
-                            woodFilter={handleWoodChange}
-                            categoryFilter={handleCategoryChange}
-                            closeFilter={closeFilter}
-                            />
+            {isFiltersOpen ? ( //cannot separate this into signle component beacuse it cause sharing params state issue
+                <main className="w-1/2 py-5 px-5 h-auto z-40 absolute bg-white/80 backdrop-blur-sm shadow-sm flex-row place-items-center">
+                <nav className="flex h-[50%] mb-12 w-full justify-between items-center">
+                  <h1 className="text-xl">Filters</h1>
+                  <button onClick={closeFilter}><X /></button>
+                </nav>
+                <section className="grid w-full h-[50%] grid-cols-1 gap-12 items">
+                          <select className="p-2" onChange={handleSortChange} value={state.sort}>
+                              <option value="">Sort</option>
+                              <option value="price_asc">Price (Min to Max)</option>
+                              <option value="price_desc">Price (Max to Min)</option>
+                              <option value="name_asc">A-Z</option>
+                              <option value="name_desc">Z-A</option>
+                              <option value="newest">Newest</option>
+                              <option value="oldest">Oldest</option>
+                          </select>
+                          <select className="p-2" onChange={handleWoodChange} value={state.wood_type}>
+                              <option value="">Wood Type</option>
+                              <option value="walunt">Walunt</option>
+                              <option value="maple">Maple</option>
+                              <option value="oak">Oak</option>
+                              <option value="pine">Pine</option>
+                              <option value="eucalyptus">Eucalyptus</option>
+                              <option value="bamboo">Bamboo</option>
+                              <option value="teak">Teak</option>
+                              <option value="cedar">Cedar</option>
+                          </select>
+                          <select className="p-2" onChange={handleCategoryChange} value={state.category}>
+                              <option value="">Category</option>
+                              <option value="sofa">Sofa</option>
+                              <option value="chair">Chair</option>
+                              <option value="stool">Stool</option>
+                              <option value="table">Table</option>
+                              <option value="desk">Desks</option>
+                              <option value="kitchen">Kitchen</option>
+                          </select>
+                </section>
+              </main>
             )
             :
             null}
