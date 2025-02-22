@@ -4,14 +4,16 @@ import ProductCard from "../views/ProductCard";
 import Loader from "../ui/Loader";
 import { useFilter } from "../../context/FilterReducer";
 import { useSearchParams } from "react-router";
+import { Settings2 } from "lucide-react";
+import FilterMenu from "./FilterMenu";
 
 const ProductsDisplay = () => {
     const [products, setProducts] = useState<any[]>([]);
+    const [isFiltersOpen, setIsFiltersOpen] = useState(false);
     const [loading, setLoading] = useState(true);
     const { state, dispatch } = useFilter();
     const [searchParams, setSearchParams] = useSearchParams();
 
-    // Učitaj filtere iz URL-a pri prvom renderovanju
     useEffect(() => {
         const sortFromUrl = searchParams.get("sort") || "";
         const searchFromURL = searchParams.get("name") || "";
@@ -28,7 +30,6 @@ const ProductsDisplay = () => {
         dispatch({ type: "SET_LIMIT", payload: limitFromUrl});
     }, []);
 
-    // Fetch proizvoda sa filtracijom
     useEffect(() => {
         setLoading(true);
         axios.get('https://furniture-api.fly.dev/v1/products/', {
@@ -95,9 +96,22 @@ const ProductsDisplay = () => {
         })
     };
 
+    const closeFilter = () => {
+        setIsFiltersOpen(false);
+    };
+
     return (
         <main className="mt-[90px] px-5">
-            <nav className="flex justify-between gap-3 mb-3 py-3 border-b border-gray-300">
+            <nav className="px-5 py-2 flex justify-between lg:hidden">
+                <button onClick={() => setIsFiltersOpen(!isFiltersOpen)} className="flex rounded-lg border-gray-300 border p-1 hover:bg-gray-100 cursor-pointer items-center">Filters <Settings2 /></button>
+                <input
+                    type="text"
+                    placeholder="Search products..."
+                    onChange={handleSearchChange}
+                    className="border p-2 "
+                />
+            </nav>
+            <nav className="lg:flex hidden justify-between gap-3 mb-3 py-3 border-b border-gray-300">
                <div className="flex gap-2">
                <select className="p-2" onChange={handleSortChange} value={state.sort}>
                     <option value="">Sort</option>
@@ -140,6 +154,16 @@ const ProductsDisplay = () => {
             {state.name.length > 0 && (
                 <h1 className="font-bold text-xl">Results for "{state.name}"</h1>
             )}
+
+            {isFiltersOpen ? (
+                <FilterMenu sortFilter={handleSearchChange}
+                            woodFilter={handleWoodChange}
+                            categoryFilter={handleCategoryChange}
+                            closeFilter={closeFilter}
+                            />
+            )
+            :
+            null}
 
             <section className={`w-full h-full ${!loading ? 'grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 place-items-center gap-5' : 'flex justify-center items-center'}`}>
                 {!loading ? (
