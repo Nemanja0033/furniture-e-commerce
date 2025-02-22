@@ -102,6 +102,15 @@ const ProductsDisplay = () => {
 
     return (
         <main className="mt-[90px] px-5">
+            {isFiltersOpen ? (
+                <FilterMenu sortFilter={handleSearchChange}
+                            woodFilter={handleWoodChange}
+                            categoryFilter={handleCategoryChange}
+                            closeFilter={closeFilter}
+                            />
+            )
+            :
+            null}
             <nav className="px-5 py-2 flex justify-between lg:hidden">
                 <button onClick={() => setIsFiltersOpen(!isFiltersOpen)} className="flex rounded-lg border-gray-300 border p-1 hover:bg-gray-100 cursor-pointer items-center">Filters <Settings2 /></button>
                 <input
@@ -154,16 +163,6 @@ const ProductsDisplay = () => {
             {state.name.length > 0 && (
                 <h1 className="font-bold text-xl">Results for "{state.name}"</h1>
             )}
-
-            {isFiltersOpen ? (
-                <FilterMenu sortFilter={handleSearchChange}
-                            woodFilter={handleWoodChange}
-                            categoryFilter={handleCategoryChange}
-                            closeFilter={closeFilter}
-                            />
-            )
-            :
-            null}
 
             <section className={`w-full h-full ${!loading ? 'grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 place-items-center gap-5' : 'flex justify-center items-center'}`}>
                 {!loading ? (

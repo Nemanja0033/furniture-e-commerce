@@ -6,12 +6,12 @@ const FilterMenu = ({sortFilter, woodFilter, categoryFilter, closeFilter}: Filte
   const {state} = useFilter();
 
   return (
-    <main className="w-1/2 px-5 h-screen z-40 absolute bg-white/80 backdrop-blur-sm shadow-sm grid grid-cols-1 place-items-center">
-      <nav className="flex w-full h-[5%] justify-between items-center">
+    <main className="w-1/2 py-5 px-5 h-auto z-40 absolute bg-white/80 backdrop-blur-sm shadow-sm flex-row place-items-center">
+      <nav className="flex h-[50%] mb-12 w-full justify-between items-center">
         <h1 className="text-xl">Filters</h1>
         <button onClick={closeFilter}><X /></button>
       </nav>
-      <section className="grid w-full h-[70%] grid-cols-1 gap-12 items-stretch">
+      <section className="grid w-full h-[50%] grid-cols-1 gap-12 items">
                 <select className="p-2" onChange={sortFilter} value={state.sort}>
                     <option value="">Sort</option>
                     <option value="price_asc">Price (Min to Max)</option>
