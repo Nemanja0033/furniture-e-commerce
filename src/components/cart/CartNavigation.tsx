@@ -22,7 +22,7 @@ const CartNavigation = ({ toggler }: CartNavigationProps) => {
         </button>
       </nav>
 
-      <section className="w-full h-full p-4 overflow-auto">
+      <section className="w-full h-full grid grid-cols-1 gap-2 p-4 overflow-auto">
         {state.items.length > 0 ? (
           state.items.map((i) => (
             <ItemView key={i.id} {...i} />
