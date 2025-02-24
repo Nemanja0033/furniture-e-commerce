@@ -12,7 +12,6 @@ const ProductsDisplay = () => {
     const [loading, setLoading] = useState(true);
     const { state, dispatch } = useFilter();
     const [searchParams, setSearchParams] = useSearchParams();
-    console.log(products)
 
     useEffect(() => {
         const sortFromUrl = searchParams.get("sort") || "";
