@@ -1,12 +1,17 @@
 import { Search, ShoppingCart} from 'lucide-react'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router'
 import CartNavigation from '../cart/CartNavigation';
 
 const Navigation = () => { 
     const path = useLocation();
     const [isCartOpen, setIsCartOpen] = useState(false);
-    const cartItems: any = localStorage.getItem('cart');
+    const [itemCounter, setItemCounter] = useState<any>(localStorage.getItem("cart"));
+
+    useEffect(() => {
+        const cartItems = JSON.parse(localStorage.getItem("cart") || "[]");
+        setItemCounter(cartItems);
+    }, [itemCounter]);
 
     const cartNavToggler = () => {
         setIsCartOpen(false);
@@ -29,7 +34,7 @@ const Navigation = () => {
             null
             }
             <button onClick={() => setIsCartOpen(true)} className='rounded-lg border-gray-300 border p-1 hover:bg-gray-100 cursor-pointer'><ShoppingCart size={24} /></button>
-            <span className='bg-slate-500 text-white rounded-full w-6 scale-90 relative right-5 bottom-3 text-center'>{cartItems[0].length}</span>
+            <span className='bg-slate-500 text-white rounded-full w-6 scale-90 relative right-5 bottom-3 text-center'>{itemCounter.length}</span>
         </div>
     </nav>
   )
