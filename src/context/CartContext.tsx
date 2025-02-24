@@ -11,7 +11,7 @@ type State = {
 };
 
 type CartAction =
-    | { type: "ADD_ITEM"; payload: CartItem }
+    | { type: "ADD_ITEM"; payload: any }
     | { type: "REMOVE_ITEM"; payload: string }
     | { type: "CLEAR_CART" };
 
