@@ -1,7 +1,8 @@
+import Hero from '../components/index/Hero'
 
 const Index = () => {
   return (
-    <div>Index</div>
+    <div><Hero /></div>
   )
 }
 

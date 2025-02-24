@@ -1,0 +1,1 @@
+export const HERO_IMG = 'https://wvxxlssoccbctxspmtyy.supabase.co/storage/v1/object/public/products/public/4c13a0bb-0df0-4bd3-8095-5cc8b0b4f182.jpeg'
