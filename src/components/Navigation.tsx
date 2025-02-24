@@ -1,10 +1,28 @@
 import {Search, ShoppingCart} from 'lucide-react'
+import { useState } from 'react';
 import { Link, useLocation } from 'react-router'
+import CartNavigation from './Cart.tsx/CartNavigation';
+
 
 const Navigation = () => {
     const path = useLocation();
-    console.log(path)
-  return (
+    const [isCartOpen, setIsCartOpen] = useState(false);
+
+    const cartNavToggler = () => {
+        setIsCartOpen(false);
+    }
+
+    if(isCartOpen){
+        return (
+        <div className='bg-black/70 w-full max-h-screen flex justify-end'>
+            <CartNavigation products={[]}
+                            toggler={cartNavToggler} 
+                            />
+        </div>
+        )
+    }
+
+    return (
     <nav className="w-full h-[70px] items-center px-15 flex justify-between shadow-md backdrop-blur-lg bg-amber-50/60">
         <Link to={'/'} className="text-3xl font-bold text-gray-800">Aks.</Link>
         <div className="flex items-center gap-2">
@@ -18,7 +36,7 @@ const Navigation = () => {
                 <input className='border border-gray-300 p-1 rounded-lg' type='text' placeholder='Search products' />
               </>
             )}
-            <button className='rounded-lg border-gray-300 border p-1 hover:bg-gray-100 cursor-pointer'><ShoppingCart size={24} /></button>
+            <button onClick={() => setIsCartOpen(true)} className='rounded-lg border-gray-300 border p-1 hover:bg-gray-100 cursor-pointer'><ShoppingCart size={24} /></button>
         </div>
     </nav>
   )
