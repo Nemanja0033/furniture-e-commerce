@@ -28,7 +28,8 @@ const Navigation = () => {
             : 
             null
             }
-            <button onClick={() => setIsCartOpen(true)} className='rounded-lg border-gray-300 border p-1 hover:bg-gray-100 cursor-pointer'><ShoppingCart size={24} />{cartItems[0].length}</button>
+            <button onClick={() => setIsCartOpen(true)} className='rounded-lg border-gray-300 border p-1 hover:bg-gray-100 cursor-pointer'><ShoppingCart size={24} /></button>
+            <span className='bg-slate-500 text-white rounded-full w-6 scale-90 relative right-5 bottom-3 text-center'>{cartItems[0].length}</span>
         </div>
     </nav>
   )
