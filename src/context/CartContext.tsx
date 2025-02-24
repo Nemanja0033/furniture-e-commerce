@@ -1,18 +1,5 @@
 import { createContext, ReactNode, useContext, useEffect, useReducer } from "react";
-
-type CartItem = {
-    count: number;
-    id: string;
-    title: string;
-    price: number;
-    img: string,
-    wood_type: string,
-    amount: number,
-};
-
-type State = {
-    items: CartItem[];
-};
+import { State } from "../types/CartRecuderType";
 
 type CartAction =
     | { type: "ADD_ITEM"; payload: any }
