@@ -7,9 +7,9 @@ export function cartReducer(state: State, action: CartAction): State {
                 ...state,
                 items: state.items.some((item) => item.id === action.payload.id)
                 ? state.items.map((item) =>
-                    item.id === action.payload.id ? { ...item, count: item.count + 1 } : item
+                    item.id === action.payload.id ? { ...item, amount: item.amount + 1 } : item
                 )
-                : [...state.items, { ...action.payload, count: 1 }]
+                : [...state.items, { ...action.payload, amount: 1 }]
         };
         case "REMOVE_ITEM":
             return { ...state, items: state.items.filter((item) => item.id !== action.payload) };
