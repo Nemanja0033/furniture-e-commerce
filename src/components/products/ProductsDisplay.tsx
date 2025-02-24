@@ -203,7 +203,7 @@ const ProductsDisplay = () => {
                 )}
             </div>
 
-            <section className={`w-full lg:h-screen h-full ${!loading ? 'grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 place-items-center gap-5' : 'flex justify-center items-center'}`}>
+            <section className={`w-full ${products.length < 1 ? 'lg:h-full h-screen' : 'h-full'}  ${!loading ? 'grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 place-items-center gap-5' : 'flex justify-center items-center'}`}>
                 {!loading ? (
                         products.map((p) => (
                             <ProductCard id={p.id} desc={p.finish} wood_type={p.wood_type} key={p.id} img={p.image_path} title={p.name} price={p.price} />
