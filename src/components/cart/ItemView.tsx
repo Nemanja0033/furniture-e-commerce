@@ -13,16 +13,21 @@ const ItemView = ({ title, img, price, wood_type, id}: ItemViewProps) => {
     const { dispatch } = useCart();
 
   return (
-    <div className="w-full h-auto flex-row">
-        <div className="flex justify-between">
-            <div className="flex justify-start gap-2">
-                <img className="w-32" src={img} alt={title} />
+    <div className="w-full h-auto flex-row px-5">
+        <div className="flex justify-between mb-3">
+            <div className="flex justify-start items-start gap-2">
+                <img className="w-28 rounded-xl" src={img} alt={title} />
+                <div className="flex-row">
                 <h1>{title}</h1>
+                <p className="text-gray-500 mt-8 font-light">{wood_type}</p>
+                <p className="mt-3">${price}</p>
+                </div>
             </div>
-            <button onClick={() => dispatch({type:"REMOVE_ITEM", payload: id})}><Trash2 size={18} /></button>
+            <div className="flex items-start">
+                <button className="cursor-pointer" onClick={() => dispatch({type:"REMOVE_ITEM", payload: id})}><Trash2 size={18} /></button>
+            </div>
         </div>
-        <span>{wood_type}</span>
-        <span>{price}</span>
+        <hr className="text-gray-300" />
     </div>
   )
 }
