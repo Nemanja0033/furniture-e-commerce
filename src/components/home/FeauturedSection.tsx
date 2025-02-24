@@ -37,7 +37,10 @@ const FeauturedSection = () => {
 			{products.map((p: any) => (
 					<ProductCard img={p.image_path} 
 								 title={p.name} 
-								 price={p.price} 
+								 price={p.price}
+								 desc={p.finish}
+								 wood_type={p.wood_type} 
+								 id={p.id}
 								 />
 			))}
 			</section>
