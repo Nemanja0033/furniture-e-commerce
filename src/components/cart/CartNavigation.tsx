@@ -25,7 +25,7 @@ const CartNavigation = ({ toggler }: CartNavigationProps) => {
       <section className="w-full h-full grid grid-cols-1 gap-2 p-4 overflow-auto">
         {state.items.length > 0 ? (
           state.items.map((i) => (
-            <ItemView key={i.id} {...i} />
+            <ItemView title={i.title} img={i.img} price={i.price} wood_type={i.wood_type} id={i.id}  />
           ))
         ) : (
           <div className="flex items-center justify-center h-full">

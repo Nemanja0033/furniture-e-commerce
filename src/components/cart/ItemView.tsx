@@ -6,10 +6,11 @@ type ItemViewProps = {
     img: string,
     price: number,
     wood_type: string,
-    id: string
+    id: string,
+    amount: number
 }
 
-const ItemView = ({ title, img, price, wood_type, id}: ItemViewProps) => {
+const ItemView = ({ title, img, price, wood_type, id, amount}: ItemViewProps) => {
     const { dispatch } = useCart();
 
   return (
@@ -19,7 +20,12 @@ const ItemView = ({ title, img, price, wood_type, id}: ItemViewProps) => {
                 <img className="w-28 rounded-xl" src={img} alt={title} />
                 <div className="flex-row">
                 <h1>{title}</h1>
-                <p className="text-gray-500 mt-8 font-light">{wood_type}</p>
+                <p className="text-gray-500 font-light">{wood_type}</p>
+                <div className="flex items-center">
+                    <button>-</button>
+                    <span>{amount}</span>
+                    <button>+</button>
+                </div>
                 <p className="mt-3">${price}</p>
                 </div>
             </div>

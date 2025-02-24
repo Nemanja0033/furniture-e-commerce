@@ -6,6 +6,7 @@ type CartItem = {
     price: number;
     img: string,
     wood_type: string,
+    amount: number,
 };
 
 type State = {
@@ -15,7 +16,9 @@ type State = {
 type CartAction =
     | { type: "ADD_ITEM"; payload: any }
     | { type: "REMOVE_ITEM"; payload: string }
-    | { type: "CLEAR_CART" };
+    | { type: "INCREMENT"; payload: any}
+    | { type: "DECREMENT"; payload: any}
+    | { type: "CLEAR_CART" }
 
 const initialState: State = {
     items: typeof window !== "undefined" && localStorage.getItem("cart")
@@ -29,6 +32,10 @@ function reducer(state: State, action: CartAction): State {
             return { ...state, items: [...state.items, action.payload] };
         case "REMOVE_ITEM":
             return { ...state, items: state.items.filter((item) => item.id !== action.payload) };
+        case "INCREMENT":
+            return {... state, items: state.items.map((item) => item.id === action.payload ? {...item, count: item.amount + 1 } : item)};
+        case "DECREMENT":
+            return {... state, items: state.items.map((item) => item.id === action.payload ? {...item, count: item.amount - 1 } : item) }
         case "CLEAR_CART":
             return { ...state, items: [] };
         default:
