@@ -8,7 +8,7 @@ interface CartNavigationProps {
 
 const CartNavigation = ({ toggler }: CartNavigationProps) => {
   const { state } = useCart();
-  console.log(state.items)
+  const totalItemsInCart = state.items.reduce((total, item) => total + item.amount, 0);
 
   const totalPrice = state.items.reduce((total, item) => total + item.price, 0);
 
@@ -16,7 +16,7 @@ const CartNavigation = ({ toggler }: CartNavigationProps) => {
     <aside className="fixed top-0 right-0 w-[400px] max-w-[90%] bg-white h-full grid grid-rows-[auto_1fr_auto] shadow-lg">
       <nav className="flex w-full h-[50px] px-5 justify-between items-center shadow-sm">
         <span className="font-semibold text-lg">
-          Shopping Cart ({state.items.length})
+          Shopping Cart ({totalItemsInCart})
         </span>
         <button onClick={toggler} className="p-2 rounded-md hover:bg-gray-200 transition">
           <X size={24} />

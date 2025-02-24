@@ -1,6 +1,7 @@
 import { createContext, ReactNode, useContext, useEffect, useReducer } from "react";
 
 type CartItem = {
+    count: number;
     id: string;
     title: string;
     price: number;
