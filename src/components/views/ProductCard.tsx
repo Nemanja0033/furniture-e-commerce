@@ -1,6 +1,6 @@
 import { ArrowRight, ShoppingCart } from "lucide-react";
 import { Link } from "react-router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 interface ProductCardProps {
 	img: string, 

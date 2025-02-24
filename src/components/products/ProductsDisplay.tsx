@@ -196,19 +196,18 @@ const ProductsDisplay = () => {
                 />
             </nav>
 
-            {state.name.length > 0 && (
-                <h1 className="font-bold text-xl">Results for "{state.name}"</h1>
-            )}
+            <div className="my-2">
+                {state.name.length > 0 && (
+                    products.length > 0 ? <h1 className="font-bold text-xl">Results for "{state.name}"</h1>
+                    : <h1 className="font-bold text-xl">No results found for "{state.name}"</h1>
+                )}
+            </div>
 
-            <section className={`w-full h-full ${!loading ? 'grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 place-items-center gap-5' : 'flex justify-center items-center'}`}>
+            <section className={`w-full h-screen ${!loading ? 'grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 place-items-center gap-5' : 'flex justify-center items-center'}`}>
                 {!loading ? (
-                    products.length > 0 ? (
                         products.map((p) => (
                             <ProductCard id={p.id} desc={p.finish} wood_type={p.wood_type} key={p.id} img={p.image_path} title={p.name} price={p.price} />
                         ))
-                    ) : (
-                        <p className="text-center mt-5 text-lg">No products found.</p>
-                    )
                 )
                 :
                 (
