@@ -21,10 +21,10 @@ const ItemView = ({ title, img, price, wood_type, id, amount}: ItemViewProps) =>
                 <div className="flex-row">
                 <h1>{title}</h1>
                 <p className="text-gray-500 font-light">{wood_type}</p>
-                <div className="flex items-center">
-                    <button>-</button>
-                    <span>{amount}</span>
-                    <button>+</button>
+                <div className="flex gap-2 items-center">
+                    <button className="bg-gray-100 hover:bg-gray-200 transition-all cursor-pointer rounded-md w-7 h-7 flex justify-center items-center" onClick={() => dispatch({type: "DECREMENT", payload: id})}>-</button>
+                    <span className="bg-white w-7 h-7 flex justify-center items-center">{amount}</span>
+                    <button className="bg-gray-100 hover:bg-gray-200 transition-all cursor-pointer rounded-md w-7 h-7 flex justify-center items-center" onClick={() => dispatch({type: "INCREMENT", payload: id})}>+</button>
                 </div>
                 <p className="mt-3">${price}</p>
                 </div>
