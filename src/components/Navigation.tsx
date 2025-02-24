@@ -1,11 +1,24 @@
+import {Search, ShoppingCart} from 'lucide-react'
+import { Link, useLocation } from 'react-router'
 
 const Navigation = () => {
+    const path = useLocation();
+    console.log(path)
   return (
-    <nav className="w-full h-[70px] items-center p-5 justify-between shadow-md backdrop-blur-lg bg-amber-50/60">
-        <h1 className="text-3xl font-bold text-gray-800">Aks.</h1>
+    <nav className="w-full h-[70px] items-center px-15 flex justify-between shadow-md backdrop-blur-lg bg-amber-50/60">
+        <Link to={'/'} className="text-3xl font-bold text-gray-800">Aks.</Link>
         <div className="flex items-center gap-2">
-            <button></button>
-            <button></button>
+            {path.pathname !== "/products" ? <Link to={'/products'} className='rounded-lg border-gray-300 border p-1 hover:bg-gray-100 cursor-pointer'><Search size={24} /></Link>
+            : 
+            (
+              <>
+                <select className='border border-gray-300 p-1 px-3 rounded-lg'>
+
+                </select>
+                <input className='border border-gray-300 p-1 rounded-lg' type='text' placeholder='Search products' />
+              </>
+            )}
+            <button className='rounded-lg border-gray-300 border p-1 hover:bg-gray-100 cursor-pointer'><ShoppingCart size={24} /></button>
         </div>
     </nav>
   )
