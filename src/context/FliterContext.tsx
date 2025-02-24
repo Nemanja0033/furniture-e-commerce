@@ -1,47 +1,14 @@
 import React, { createContext, ReactNode, useContext, useReducer } from "react";
+import { filterReducer } from "../recuders/filterReducer";
+import { initialState } from "../constants/filterInitalState";
+import { State } from "../types/FilterStateType";
 
-type State = {
-    sort: string,
-    name: string,
-    category: string,
-    wood_type: string,
-    offset: number,
-    limit: number,
-}
 
-const initialState: State = {
-    sort: '',
-    name: '',
-    category: '',
-    wood_type: '',
-    offset: 0,
-    limit: 10,
-}
-
-//reducer func
-function reducer(state: State, action: any){
-    switch(action.type){
-        case 'SET_SORT':
-            return {...state, sort: action.payload};
-        case "SET_NAME":
-            return {...state, name: action.payload};
-        case "SET_CATEGORY":
-            return {...state, category: action.payload}
-        case "WOOD_TYPE":
-            return {...state, wood_type: action.payload}
-        case "OFFSET":
-            return {...state, offset: action.payload}
-        case "SET_LIMIT":
-            return {...state, limit: action.payload}
-        default:
-            return state;
-    }
-}
 
 const FilterContext = createContext<{state: State, dispatch: React.Dispatch<any>} | undefined>(undefined);
 
 export const FilterProvider = ({children}: {children: ReactNode}) => {
-    const [state, dispatch] = useReducer(reducer, initialState);
+    const [state, dispatch] = useReducer(filterReducer, initialState);
 
     return(
         <FilterContext.Provider value={{state, dispatch}}>
