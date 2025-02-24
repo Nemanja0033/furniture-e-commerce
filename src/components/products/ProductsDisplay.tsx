@@ -105,14 +105,14 @@ const ProductsDisplay = () => {
     };
     
     return (
-        <main className="mt-[90px] px-5">
+        <main className="mt-[90px] px-10">
             {isFiltersOpen ? ( //cannot separate this into signle component beacuse it cause sharing params state issue
-                <main className="w-1/2 py-5 px-5 h-auto z-40 absolute bg-white/80 backdrop-blur-sm shadow-sm flex-row place-items-center">
-                <nav className="flex h-[50%] mb-12 w-full justify-between items-center">
+                <main className="w-full py-5 h-auto z-40 absolute left-0 bg-white/80 backdrop-blur-sm shadow-sm flex-row place-items-center">
+                <nav className="flex h-[50%] mb-12 px-5 w-full justify-between items-center">
                   <h1 className="text-xl">Filters</h1>
                   <button onClick={closeFilter}><X /></button>
                 </nav>
-                <section className="grid w-full h-[50%] grid-cols-1 gap-12 items">
+                <section className="grid w-full px-5 h-[50%] grid-cols-1 gap-12 items">
                           <select className="p-2" onChange={handleSortChange} value={state.sort}>
                               <option value="">Sort</option>
                               <option value="price_asc">Price (Min to Max)</option>
@@ -147,7 +147,7 @@ const ProductsDisplay = () => {
             )
             :
             null}
-            <nav className="px-5 py-2 flex justify-between lg:hidden">
+            <nav className="py-2 flex justify-between lg:hidden">
                 <button onClick={() => setIsFiltersOpen(!isFiltersOpen)} className="flex rounded-lg border-gray-300 border p-1 hover:bg-gray-100 cursor-pointer items-center">Filters <Settings2 /></button>
                 <input
                     type="text"
@@ -203,7 +203,7 @@ const ProductsDisplay = () => {
                 )}
             </div>
 
-            <section className={`w-full h-screen ${!loading ? 'grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 place-items-center gap-5' : 'flex justify-center items-center'}`}>
+            <section className={`w-full lg:h-screen h-full ${!loading ? 'grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 place-items-center gap-5' : 'flex justify-center items-center'}`}>
                 {!loading ? (
                         products.map((p) => (
                             <ProductCard id={p.id} desc={p.finish} wood_type={p.wood_type} key={p.id} img={p.image_path} title={p.name} price={p.price} />

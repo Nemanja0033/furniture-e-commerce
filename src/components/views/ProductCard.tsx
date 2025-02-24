@@ -15,7 +15,7 @@ const ProductCard = ({img, title, price, desc, wood_type, id}: ProductCardProps)
 	const [isHover, setIsHover] = useState(false);
 
 	return(
-		<div onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)} className={`w-72 hover:opacity-80 translation-all cursor-pointer h-full rounded-md grid grid-col-1 shadow-md`}>
+		<div onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)} className={`md:w-72 w-full hover:opacity-80 translation-all cursor-pointer h-full rounded-md grid grid-col-1 shadow-md`}>
 			<img className="h-72 w-full" src={img} alt={title} />
 			<button  className={`rounded-lg relative ${isHover ? 'opacity-100' : 'opacity-0'} m-0 h-8 translition-all bottom-15 left-3 bg-white flex justify-center border-gray-300 border p-1 hover:bg-gray-100 cursor-pointer w-10`}><ShoppingCart /></button>
 			<div className="relative bottom-5">
