@@ -3,7 +3,14 @@ import { CartAction, State } from "../types/CartRecuderType";
 export function cartReducer(state: State, action: CartAction): State {
     switch (action.type) {
         case "ADD_ITEM":
-            return { ...state, items: [...state.items, action.payload] };
+        return {
+                ...state,
+                items: state.items.some((item) => item.id === action.payload.id)
+                ? state.items.map((item) =>
+                    item.id === action.payload.id ? { ...item, count: item.count + 1 } : item
+                )
+                : [...state.items, { ...action.payload, count: 1 }]
+        };
         case "REMOVE_ITEM":
             return { ...state, items: state.items.filter((item) => item.id !== action.payload) };
         case "INCREMENT":
