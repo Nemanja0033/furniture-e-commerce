@@ -1,5 +1,5 @@
-import { Search, ShoppingCart} from 'lucide-react'
-import { useEffect, useState } from 'react';
+import {Search, ShoppingCart} from 'lucide-react'
+import { useState } from 'react';
 import { Link, useLocation } from 'react-router'
 import CartNavigation from '../cart/CartNavigation';
 import { useCart } from '../../context/CartContext';
