@@ -20,7 +20,8 @@ const ProductCard = ({img, title, price, desc, wood_type, id}: ProductCardProps)
 		id: id,
 		title: title,
 		price: price,
-		img: img
+		img: img,
+		wood_type: wood_type,
 	}
 
 	return(

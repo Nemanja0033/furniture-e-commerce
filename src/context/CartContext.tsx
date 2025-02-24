@@ -2,8 +2,10 @@ import { createContext, ReactNode, useContext, useEffect, useReducer } from "rea
 
 type CartItem = {
     id: string;
-    name: string;
+    title: string;
     price: number;
+    img: string,
+    wood_type: string,
 };
 
 type State = {

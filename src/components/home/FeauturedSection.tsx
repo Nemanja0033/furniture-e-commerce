@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 import axios from 'axios';
-import ProductCard from '../views/ProductCard';
+import ProductCard from '../products/ProductCard';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router';
 import Loader from '../ui/Loader';
