@@ -3,8 +3,6 @@ import { filterReducer } from "../recuders/filterReducer";
 import { initialState } from "../constants/filterInitalState";
 import { State } from "../types/FilterStateType";
 
-
-
 const FilterContext = createContext<{state: State, dispatch: React.Dispatch<any>} | undefined>(undefined);
 
 export const FilterProvider = ({children}: {children: ReactNode}) => {
