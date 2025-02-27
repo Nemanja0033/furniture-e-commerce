@@ -7,8 +7,9 @@ import Loader from "../ui/Loader";
 const SingleProductLayout = () => {
     const productID = useParams();
     const [product, setProduct] = useState<any>();
+    const [similarProducts, setSimilarProducts] = useState<any>();
     const [loading, setLoading] = useState(true);
-    console.log(productID)
+    console.log(product)
 
     useEffect(() => {
         axios.get('https://furniture-api.fly.dev/v1/products',
@@ -21,6 +22,7 @@ const SingleProductLayout = () => {
         .then((res) => {
             setLoading(false);
             setProduct(res.data.data.filter((d: any) => d.id === productID.id));
+            similarProducts(res.data.data.filter((d: any) => d.category === product[0].category));
         })
         .catch((err) => console.error(err));
     }, []);
@@ -34,7 +36,7 @@ const SingleProductLayout = () => {
         <article className="w-full h-screen flex items-center justify-center">
             <img className="rounded-md h-full" src={product[0].image_path} alt={product[0].name} />
         </article>
-        <section className="w-full lg:h-1/2 text-start grid gap-5 grid-cols-1 justify-start">
+        <section className="w-full lg:h-1/2 text-start grid lg:mt-24 mt-5 gap-5 grid-cols-1 justify-start">
             <h1 className="text-3xl font-bold">{product[0].name}</h1>
             <p className="text-gray-500 textarea-lg">{product[0].description}</p>
             <b>Wood Type: <span className="font-normal">{product[0].wood_type}</span></b>
