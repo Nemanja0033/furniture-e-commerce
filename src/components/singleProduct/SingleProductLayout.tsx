@@ -2,10 +2,12 @@ import axios from "axios";
 import { ShoppingCart } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router"
+import Loader from "../ui/Loader";
 
 const SingleProductLayout = () => {
     const productID = useParams();
     const [product, setProduct] = useState<any>();
+    const [loading, setLoading] = useState(true);
     console.log(productID)
 
     useEffect(() => {
@@ -16,9 +18,16 @@ const SingleProductLayout = () => {
                 }
             }
         )
-        .then((res) => setProduct(res.data.data.filter((d: any) => d.id == productID.id)))
+        .then((res) => {
+            setLoading(false);
+            setProduct(res.data.data.filter((d: any) => d.id === productID.id));
+        })
         .catch((err) => console.error(err));
     }, []);
+
+    if(loading){
+        return <Loader />
+    }
 
   return (
     <main className="w-full grid lg:grid-cols-2 gap-5 grid-cols-1 px-5 mt-25">
