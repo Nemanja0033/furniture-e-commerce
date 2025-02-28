@@ -149,6 +149,7 @@ const ProductsDisplay = () => {
             <nav className="py-2 flex justify-between lg:hidden">
                 <button onClick={() => setIsFiltersOpen(!isFiltersOpen)} className="flex rounded-lg border-gray-300 border p-1 hover:bg-gray-100 cursor-pointer items-center">Filters <Settings2 /></button>
                 <input
+                    autoFocus
                     type="text"
                     placeholder="Search products..."
                     onChange={handleSearchChange}
@@ -188,6 +189,7 @@ const ProductsDisplay = () => {
                 </select>
                </div>
                 <input
+                    autoFocus
                     type="text"
                     placeholder="Search products..."
                     onChange={handleSearchChange}
