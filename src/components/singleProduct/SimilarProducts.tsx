@@ -31,7 +31,7 @@ const SimilarProducts = (category: any) => {
             <ProductCard img={p.image_path} 
                          title={p.name} 
                          price={p.price} 
-                         desc={p.description} 
+                         desc={p.finish} 
                          wood_type={p.wood_type} 
                          id={p.id} 
                          />
