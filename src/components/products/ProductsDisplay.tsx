@@ -204,7 +204,7 @@ const ProductsDisplay = () => {
                 {!loading ? (
                     products.length > 0 ? (
                         products.map((p) => (
-                            <ProductCard desc={p.finish} wood_type={p.wood_type} key={p.id} img={p.image_path} title={p.name} price={p.price} />
+                            <ProductCard id={p.id} desc={p.finish} wood_type={p.wood_type} key={p.id} img={p.image_path} title={p.name} price={p.price} />
                         ))
                     ) : (
                         <p className="text-center mt-5 text-lg">No products found.</p>
