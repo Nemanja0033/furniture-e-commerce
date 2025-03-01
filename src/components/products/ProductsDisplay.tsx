@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import ProductCard from "../views/ProductCard";
 import Loader from "../ui/Loader";
-import { useFilter } from "../../context/FilterReducer";
+import { useFilter } from "../../context/FliterContext";
 import { useSearchParams } from "react-router";
 import { Settings2, X } from "lucide-react";
 
