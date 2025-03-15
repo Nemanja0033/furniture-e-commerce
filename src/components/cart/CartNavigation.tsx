@@ -10,7 +10,6 @@ const CartNavigation = ({ toggler }: CartNavigationProps) => {
   const { state } = useCart();
   const totalItemsInCart = state.items.reduce((total, item) => total + item.amount, 0);
 
-  const totalPrice = state.items.reduce((total, item) => total + item.price, 0);
 
   return (
     <aside className="fixed top-0 right-0 w-[400px] max-w-[90%] bg-white h-full grid grid-rows-[auto_1fr_auto] shadow-lg">
@@ -37,8 +36,6 @@ const CartNavigation = ({ toggler }: CartNavigationProps) => {
 
       <nav className="p-5 border-t border-gray-300 flex flex-col gap-4 shadow-md">
         <div className="flex justify-between text-lg font-semibold">
-          <span>Total:</span>
-          <span>${totalPrice.toFixed(2)}</span>
         </div>
         <button className="w-full bg-black text-white py-3 rounded-lg hover:bg-black/70 transition">
           Proceed to Checkout

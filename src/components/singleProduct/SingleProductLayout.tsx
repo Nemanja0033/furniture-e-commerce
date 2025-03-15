@@ -4,11 +4,13 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router"
 import Loader from "../ui/Loader";
 import SimilarProducts from "./SimilarProducts";
+import { useCart } from "../../context/CartContext";
 
 const SingleProductLayout = () => {
     const productID = useParams();
     const [product, setProduct] = useState<any>();
     const [loading, setLoading] = useState(true);
+    const { dispatch } = useCart();
 
     useEffect(() => {
         axios.get('https://furniture-api.fly.dev/v1/products',
@@ -29,6 +31,14 @@ const SingleProductLayout = () => {
         return <Loader />
     }
 
+    const item = {
+		id: product[0].id,
+		title: product[0].name,
+		price: product[0].price,
+		img: product[0].image_path,
+		wood_type: product[0].wood_type,
+	}
+
   return (
     <main className="grid w-full grid-cols-1 px-5">
         <section className="w-full grid lg:grid-cols-2 gap-5 grid-cols-1 mt-25">
@@ -42,7 +52,7 @@ const SingleProductLayout = () => {
                 <b>Finish: <span className="font-normal">{product[0].finish}</span></b>
                 <b>Dimensions: <span className="font-normal">{product[0].dimensions.width} Width X {product[0].dimensions.height} Height X {product[0].dimensions.depth}</span></b>
                 <span className="text-xl font-semibold">${product[0].price}</span>
-                <button className="w-full bg-slate-900 text-white cursor-pointer hover:bg-slate-800 transition-all textarea-md rounded-md h-10 flex justify-center items-center"><ShoppingCart />Add to cart</button>
+                <button onClick={() => dispatch({type: "ADD_ITEM", payload: item})} className="w-full bg-slate-900 text-white cursor-pointer hover:bg-slate-800 transition-all textarea-md rounded-md h-10 flex justify-center items-center"><ShoppingCart />Add to cart</button>
             </section>
         </section>
         <h1 className="text-3xl font-semibold mb-3">Related Products</h1>
