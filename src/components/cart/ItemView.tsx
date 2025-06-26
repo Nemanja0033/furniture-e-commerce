@@ -14,7 +14,7 @@ const ItemView = ({ title, img, price, wood_type, id, amount}: ItemViewProps) =>
     const { dispatch } = useCart();
 
   return (
-    <div className="w-full h-auto flex-row px-5">
+    <div className="w-full h-auto flex-row px-5 mt-5">
         <div className="flex justify-between mb-3">
             <div className="flex justify-start items-start gap-2">
                 <img className="w-28 rounded-xl" src={img} alt={title} />

@@ -156,7 +156,7 @@ const ProductsDisplay = () => {
                     className="border p-2 "
                 />
             </nav>
-            <nav className="lg:flex hidden justify-between gap-3 mb-3 py-3 border-b border-gray-300">
+            <nav className="lg:flex hidden justify-between gap-3 mb-3 m-6 py-5 border-b border-gray-300">
                <div className="flex gap-2">
                <select className="p-2" onChange={handleSortChange} value={state.sort}>
                     <option value="">Sort</option>
