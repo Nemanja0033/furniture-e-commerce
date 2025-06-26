@@ -102,7 +102,27 @@ const ProductsDisplay = () => {
         });
         closeFilter();
     };
+
+    const showNextPage = () => {
+        const newOffset = Number(state.offset) + 10;
+        dispatch({ type: "OFFSET", payload: newOffset.toString()});
+        setSearchParams((prev) => {
+                const params = new URLSearchParams(prev);
+                params.set("offset", newOffset.toString());
+                return params;
+            });
+    }
     
+    const showPreviousPage = () => {
+        const newOffset = Math.max(0, Number(state.offset) - 10);
+        dispatch({ type: "OFFSET", payload: newOffset.toString() });
+        setSearchParams((prev) => {
+            const params = new URLSearchParams(prev);
+            params.set("offset", newOffset.toString());
+            return params;
+            });
+    }
+
     return (
         <main className="mt-[90px] px-10">
             {isFiltersOpen ? ( //cannot separate this into signle component beacuse it cause sharing params state issue
@@ -204,7 +224,7 @@ const ProductsDisplay = () => {
                 )}
             </div>
 
-            <section className={`w-full ${products.length < 1 ? 'lg:h-full h-screen' : 'h-full'}  ${!loading ? 'grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 place-items-center gap-5' : 'flex justify-center items-center'}`}>
+            <section className={`w-full ${products.length < 1 ? 'lg:h-full h-screen' : 'h-full'}  ${!loading ? 'grid xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 place-items-center gap-5' : 'flex justify-center items-center'}`}>
                 {!loading ? (
                         products.map((p) => (
                             <ProductCard id={p.id} desc={p.finish} wood_type={p.wood_type} key={p.id} img={p.image_path} title={p.name} price={p.price} />
@@ -216,32 +236,16 @@ const ProductsDisplay = () => {
                 )}
             </section>
             <nav className="flex justify-center">
-            <div className="flex justify-center gap-4 mt-5">
+            <div className="flex justify-center gap-4 mt-5 py-5">
                     <button
                         disabled={Number(state.offset) === 0}
-                        onClick={() => {
-                            const newOffset = Math.max(0, Number(state.offset) - 10);
-                            dispatch({ type: "OFFSET", payload: newOffset.toString() });
-                            setSearchParams((prev) => {
-                                const params = new URLSearchParams(prev);
-                                params.set("offset", newOffset.toString());
-                                return params;
-                            });
-                        }}
+                        onClick={showPreviousPage}
                         className="px-4 py-2 bg-gray-200 rounded disabled:opacity-50"
                     >
                         Previous
                     </button>
                     <button
-                        onClick={() => {
-                            const newOffset = Number(state.offset) + 10;
-                            dispatch({ type: "OFFSET", payload: newOffset.toString() });
-                            setSearchParams((prev) => {
-                                const params = new URLSearchParams(prev);
-                                params.set("offset", newOffset.toString());
-                                return params;
-                            });
-                        }}
+                        onClick={showNextPage}
                         className="px-4 py-2 bg-gray-200 rounded"
                     >
                         Next
