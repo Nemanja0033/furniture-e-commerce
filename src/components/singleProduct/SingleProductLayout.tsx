@@ -5,7 +5,7 @@ import { useParams } from "react-router"
 import Loader from "../ui/Loader";
 import SimilarProducts from "./SimilarProducts";
 import { useCart } from "../../context/CartContext";
-import { motion, scale } from "framer-motion";
+import { motion } from "framer-motion";
 
 const SingleProductLayout = () => {
     const productID = useParams();
